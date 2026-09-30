@@ -1,0 +1,125 @@
+/* Cyber Safety Checker - styles
+   Colour tokens live in :root so they are easy to change. */
+:root {
+  --bg: #080d18;
+  --panel: #111a2d;
+  --panel-2: #0c1424;
+  --line: #22304d;
+  --text: #e6ecf7;
+  --muted: #94a3bd;
+  --accent: #3dd6c6;
+  --low: #34d399;
+  --medium: #fbbf24;
+  --high: #f87171;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+.wrap { width: min(880px, 100% - 2rem); margin-inline: auto; }
+
+/* Header */
+.hero {
+  padding: 3rem 0 2rem;
+  background:
+    linear-gradient(rgba(61,214,198,.05) 1px, transparent 1px) 0 0 / 100% 28px,
+    linear-gradient(180deg, #0d1730, var(--bg));
+  border-bottom: 1px solid var(--line);
+}
+h1 { margin: 0 0 .5rem; font-size: clamp(2rem, 6vw, 3rem); letter-spacing: -.02em; color: var(--accent); }
+.lead { margin: 0 0 1rem; font-size: 1.15rem; max-width: 60ch; }
+.disclaimer {
+  margin: 0; padding: .75rem 1rem; max-width: 66ch;
+  border-left: 4px solid var(--medium);
+  background: var(--panel-2); color: var(--muted); font-size: .95rem;
+}
+.disclaimer strong { color: var(--text); }
+
+/* Tabs */
+.tabs { display: flex; gap: .5rem; margin: 2rem 0 1rem; flex-wrap: wrap; }
+.tab {
+  flex: 1 1 160px; padding: .8rem 1rem; cursor: pointer;
+  background: var(--panel-2); color: var(--muted);
+  border: 1px solid var(--line); border-radius: 8px; font: inherit; font-weight: 600;
+}
+.tab:hover { color: var(--text); }
+.tab.active { background: var(--panel); color: var(--accent); border-color: var(--accent); }
+
+/* Panels */
+.panel, .tips {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
+}
+.panel[hidden] { display: none; }
+h2 { margin: 0 0 1rem; font-size: 1.4rem; }
+label { display: block; margin-bottom: .4rem; color: var(--muted); font-size: .95rem; }
+
+textarea, input[type="text"] {
+  width: 100%; padding: .85rem 1rem;
+  background: var(--panel-2); color: var(--text);
+  border: 1px solid var(--line); border-radius: 8px; font: inherit;
+}
+textarea { resize: vertical; min-height: 150px; }
+input[type="text"] { font-family: Consolas, "Courier New", monospace; }
+textarea::placeholder, input::placeholder { color: #5d6b87; }
+
+.actions { display: flex; gap: .6rem; margin-top: 1rem; flex-wrap: wrap; }
+.btn {
+  padding: .75rem 1.3rem; border-radius: 8px; cursor: pointer;
+  font: inherit; font-weight: 600; border: 1px solid var(--line);
+}
+.btn.primary { background: var(--accent); color: #04221f; border-color: var(--accent); }
+.btn.primary:hover { filter: brightness(1.1); }
+.btn.ghost { background: transparent; color: var(--text); }
+.btn.ghost:hover { border-color: var(--accent); }
+
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* Results */
+.result { margin-top: 1.5rem; }
+.result:empty { display: none; }
+.result-card { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 1.25rem; }
+.badge {
+  display: inline-block; padding: .3rem .9rem; border-radius: 999px;
+  font-weight: 700; color: #0a0f1a;
+}
+.low .badge { background: var(--low); }
+.medium .badge { background: var(--medium); }
+.high .badge { background: var(--high); }
+.result-card.low { border-left: 5px solid var(--low); }
+.result-card.medium { border-left: 5px solid var(--medium); }
+.result-card.high { border-left: 5px solid var(--high); }
+.result-card h3 { margin: 1.2rem 0 .4rem; font-size: 1.05rem; }
+.result-card ul { margin: 0; padding-left: 1.2rem; }
+.result-card li { margin-bottom: .35rem; }
+.result-card .why { color: var(--muted); font-size: .92rem; }
+.note {
+  margin-top: 1.2rem; padding: .75rem 1rem; border-radius: 8px;
+  background: #1a2540; color: var(--muted); font-size: .92rem;
+}
+
+/* Tips */
+.tip-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;
+}
+.tip-grid li {
+  padding: 1rem; background: var(--panel-2);
+  border: 1px solid var(--line); border-radius: 10px; color: var(--muted);
+}
+.tip-grid strong { display: block; color: var(--text); margin-bottom: .25rem; }
+
+.footer { padding: 1rem 0 2.5rem; color: var(--muted); font-size: .9rem; }
+
+@media (max-width: 520px) {
+  .panel, .tips { padding: 1.1rem; }
+  .btn { flex: 1 1 100%; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
