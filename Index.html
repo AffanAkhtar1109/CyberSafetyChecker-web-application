@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cyber Safety Checker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <h1>Cyber Safety Checker</h1>
+      <p class="lead">Paste a message or a link and see the potential warning signs in it, explained in plain language.</p>
+      <p class="disclaimer">This tool shows <strong>indicators only</strong>. It cannot prove that something is a scam or safe. When unsure, contact the sender through an official channel.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" id="tab-message" role="tab" aria-selected="true" aria-controls="panel-message">Message Checker</button>
+      <button class="tab" id="tab-url" role="tab" aria-selected="false" aria-controls="panel-url">URL Checker</button>
+    </div>
+
+    <!-- MESSAGE CHECKER -->
+    <section class="panel" id="panel-message" role="tabpanel">
+      <h2>Check a message or email</h2>
+      <label for="messageInput">Paste the suspicious text here</label>
+      <textarea id="messageInput" rows="8" placeholder="Example: Dear customer, your account will be blocked today. Share the OTP to verify now..."></textarea>
+      <div class="actions">
+        <button class="btn primary" id="analyzeMessageBtn">Analyze Message</button>
+        <button class="btn ghost" id="messageExampleBtn">Try an example</button>
+        <button class="btn ghost" id="messageClearBtn">Clear</button>
+      </div>
+      <div class="result" id="messageResult" aria-live="polite"></div>
+    </section>
+
+    <!-- URL CHECKER -->
+    <section class="panel" id="panel-url" role="tabpanel" hidden>
+      <h2>Check a website address</h2>
+      <label for="urlInput">Enter the URL (do not open it)</label>
+      <input type="text" id="urlInput" placeholder="http://secure-login.example-bank.xyz/verify?id=123" autocomplete="off" spellcheck="false">
+      <div class="actions">
+        <button class="btn primary" id="checkUrlBtn">Check URL</button>
+        <button class="btn ghost" id="urlExampleBtn">Try an example</button>
+        <button class="btn ghost" id="urlClearBtn">Clear</button>
+      </div>
+      <div class="result" id="urlResult" aria-live="polite"></div>
+    </section>
+
+    <!-- SAFETY TIPS -->
+    <section class="tips" id="tips">
+      <h2>Safety tips</h2>
+      <ul class="tip-grid">
+        <li><strong>Never share OTPs or passwords.</strong> Real banks and companies do not ask for them by message or call.</li>
+        <li><strong>Do not click suspicious links.</strong> Type the official website address yourself instead.</li>
+        <li><strong>Verify the sender.</strong> Check the email address or number, and contact the company on its official channel.</li>
+        <li><strong>Use strong passwords.</strong> Make them long and unique for every account. A password manager helps.</li>
+        <li><strong>Enable two-factor authentication.</strong> It protects your account even if a password leaks.</li>
+        <li><strong>Pause when you feel pressure.</strong> Urgency and fear are the scammer's main tools.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="wrap footer">
+    <p>Cyber Safety Checker is an educational project. It does not send your text anywhere: all checks run in your browser.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
